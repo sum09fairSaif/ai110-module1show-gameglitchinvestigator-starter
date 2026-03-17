@@ -40,7 +40,7 @@ What this showed me: Even though I reorganized the guess-checking logic (moving 
 
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
 
----
+---Streamlit "reruns" are like the app pressing the "restart" button on itself every time you interact with it. When you type in a text box, click a button, or change a slider, Streamlit re-executes the entire Python script from top to bottom, which means all variables get recreated and reset to their default values, unless you use session state to save them. Session state is like writing things on a sticky note that survives every restart. Without it, the secret number, attempt counter, and game status would all reset every time you submitted a guess. In this project, st.session_state let us "remember" the secret number, attempts, and game status across button clicks and form submissions. In simple terms, reruns are automatic restarts, and session state is the memory that persists through those restarts, which is essential for games or any app that needs to track information over multiple user interactions.
 
 ## 5. Looking ahead: your developer habits
 
@@ -48,3 +48,9 @@ What this showed me: Even though I reorganized the guess-checking logic (moving 
   - This could be a testing habit, a prompting strategy, or a way you used Git.
 - What is one thing you would do differently next time you work with AI on a coding task?
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+
+---Habit/Strategy to reuse: Running pytest after making code changes to validate that my fixes don't break existing functionality, combined with manual testing across all modes/scenarios. In this project, running the test suite immediately after fixing the FIXME 2 block gave me confidence that I hadn't introduced new bugs while reorganizing the attempt-counting logic. I'll bring this "test-first validation" habit to future projects to catch regressions early.
+
+What I'd do differently next time with AI: I'd ask the AI more specific and detailed questions upfront, and I'd critically verify every suggestion by running tests or playing through scenarios before implementing it; not just accepting it because it came from an AI. In this project, ChatGPT gave me both correct advice (the inverted hint logic fix) and misleading advice (about point deductions), so I learned that AI suggestions need verification, not blind trust.
+
+How this changed my thinking about AI-generated code: AI-generated code can look syntactically correct and run without errors, but have fundamental logical flaws that only reveal themselves through actual testing and user interaction. I now understand that AI code requires the same level of scrutiny and testing as any code; maybe more, because it can confidently generate plausible-sounding bugs that trap a developer for hours.
